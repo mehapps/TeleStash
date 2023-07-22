@@ -14,13 +14,3 @@ async def upload_file(file_name, caption):
             print("File sent successfully!")
     except Exception as e:
         print(f"Error: {e}")
-
-
-if __name__ == "__main__":
-    # Replace 'file_name' with the path to the file you want to send
-    file_name = "test4.txt"
-
-    # Replace 'caption' with the caption you want to include with the file
-    caption = "This is the caption for the file!"
-
-   
