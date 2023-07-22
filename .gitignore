@@ -1,0 +1,6 @@
+__pycache__/
+store/
+venv/
+secrets.py
+session.session
+test*
