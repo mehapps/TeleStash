@@ -1,16 +1,15 @@
 from telethon import TelegramClient, events
 import asyncio
-import secrets
+from secrets import api_hash, api_id
 
-# Replace 'session_name' with a unique name for your session file
-# This file will store the session data and should be kept secure
-client = TelegramClient('session_name', api_id, api_hash)
+# session.session will store the session data and should be kept secure
+client = TelegramClient('session', api_id, api_hash)
 
 
-async def upload_file(file_name, caption):
+async def upload_file_to_telegram(file, caption, file_name):
     try:
         async with client:
-            await client.send_file("me", file=file_name, caption=caption)
+            await client.send_file("me", file=file, caption=caption , DocumentAttributeFilename=file_name)
             print("File sent successfully!")
     except Exception as e:
         print(f"Error: {e}")

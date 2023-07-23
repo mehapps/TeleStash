@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>File Submission Form</title>
+</head>
+<body>
+    <h1>File Submission Form</h1>
+    <form id="upload-form" action="/uploads" method="post" enctype="multipart/form-data">
+        <label for="file">Select a file:</label>
+        <input type="file" id="file" name="file" required>
+        <br>
+        <input type="submit" value="Upload">
+    </form>
+    <script>
+        const form = document.getElementById('upload-form');
+
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const fileInput = document.getElementById('file');
+            const file = fileInput.files[0];
+
+            if (!file) {
+                alert('Please select a file.');
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('file', file);
+
+            try {
+                const response = await fetch('/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (response.ok) {
+                    alert('File uploaded successfully!');
+                } else {
+                    alert('Failed to upload file. Please try again.');
+                }
+            } catch (error) {
+                alert('An error occurred while uploading the file.');
+                console.error(error);
+            }
+        });
+    </script>
+</body>
+</html>
