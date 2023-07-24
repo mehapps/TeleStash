@@ -4,3 +4,4 @@ venv/
 secrets.py
 session.session
 test*
+.DS_Store
